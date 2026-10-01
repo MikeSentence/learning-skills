@@ -283,6 +283,21 @@ A. xxx    B. xxx    C. xxx    D. xxx
 - **当前薄弱点（硬件方向，从 `D:\文档\学习记录\index.md` 读实时数据）**：GPU 与 CPU 时钟频率关系、SIMT 分支发散的代价模型
 - **表述要求**：写实、不夸大、不堆数据
 
+## 源码与版本管理
+
+**本技能的源码在 git 仓库里迭代**。本机安装位置是指向该仓库的**目录联接（junction）**：
+
+| 项 | 路径 |
+|---|---|
+| 源码仓库 | `D:\code\learning-skills`（remote：`git@github.com:MikeSentence/learning-skills.git`） |
+| 安装位置 | `~/.workbuddy/skills/learning-coach` → 联接指向仓库里同名目录 |
+
+**因此**：直接编辑 `~/.workbuddy/skills/learning-coach/` 下的文件，就是在改仓库源码。改完后**在回复里提醒用户可以提交**（用户明确要求时可直接代为 `git commit`），提交信息写清"改了什么、为什么"。
+
+**注意区分**：本文件（技能逻辑）属于仓库；**学习数据**（`D:\文档\学习记录\`）**不属于仓库**，两者不要混。
+
+后续新增学习类技能，也放在 `D:\code\learning-skills\` 下，每个技能一个顶级目录。
+
 ## 参考文件
 
 - `references/question-types.md` — 六种题型的出题模板与示例
