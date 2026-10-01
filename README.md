@@ -68,9 +68,61 @@ ln -s /path/to/learning-skills/learning-coach ~/.workbuddy/skills/learning-coach
 - 跨主题总览：`D:\文档\学习记录\index.md`
 - 结构化主库：`D:\文档\学习记录\learning-data.json`（预留给未来做 app 直接 import）
 
+## 公开内容边界（重要）
+
+本仓库是**公开仓库**，只放"可公开、可给别人复用"的东西。
+
+| ✅ 可以进仓库 | ❌ 绝不进仓库 |
+|---|---|
+| 技能逻辑（SKILL.md、references） | 学习档案（`D:\文档\学习记录\` 全部内容） |
+| 通用题型模板、示例 | 答题对错记录、正确率、薄弱点清单 |
+| 目录结构、安装说明 | 个人的面试短板、职业规划、薪资等 |
+| 与具体个人无关的通用知识 | 任何内部/非公开资料 |
+
+**执行方式**：学习数据一律存在本地文档库，**物理上不在仓库目录内**，因此不可能被误提交。
+`learning-coach` 技能里也写明了这一点：写数据时必须写到 `D:\文档\学习记录\`，不得写进技能目录。
+
+> 如果以后想跨设备同步学习数据，**另开一个 private 仓库**，不要混进本仓库。
+
 ## 迭代约定
+
+### 提交前自检
 
 1. 改动前先确认当前分支状态：`git status`
 2. 一次提交只做一件事，提交信息写清"改了什么、为什么"
 3. `SKILL.md` 顶部的 frontmatter（`name` / `description`）决定技能能否被触发，改这两个字段要格外小心
 4. 新增技能时同步更新本 README 的「已有技能」段
+5. 提交前扫一眼 `git status` 的待提交清单，确认**没有学习数据 / 个人资料混进来**
+
+### 分支流程
+
+`main` 保持随时可用（本机通过联接直接加载它，坏了会立刻影响使用）。因此：
+
+```
+main                      ← 稳定分支，只接受 review 过的合入
+  ↑ 合并（PR / --no-ff）
+feat/xxx  fix/xxx  docs/xxx   ← 开发分支，一个改动一个分支
+```
+
+**步骤**：
+
+```bash
+# 1. 从最新 main 拉开发分支
+git checkout main && git pull
+git checkout -b feat/your-change
+
+# 2. 在分支上改 + 提交（可以多次提交）
+git add -A && git commit -m "..."
+
+# 3. 推到远端
+git push -u origin feat/your-change
+
+# 4. 开 PR，review 通过后合入 main
+gh pr create --fill        # 或到 GitHub 网页上开
+
+# 5. 合入后清理
+git checkout main && git pull
+git branch -d feat/your-change
+```
+
+**首次搭建（本次）属于例外**：仓库初始结构是直接从零建立的，已直接提交到 `main` 并推送。此后一律走分支流程。
