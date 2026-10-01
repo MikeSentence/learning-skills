@@ -1,0 +1,11 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vscode/
+
+# 学习数据不纳入版本管理（存在本地文档库）
+learning-data.json
