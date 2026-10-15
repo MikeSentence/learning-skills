@@ -16,11 +16,16 @@ Personal learning skills for WorkBuddy. Learn whatever you want, one level at a 
 ```
 learning-skills/
 ├── README.md
-└── learning-coach/          # 闯关式一对一学习教练
-    ├── SKILL.md             # 技能主文件（触发条件 + 执行流程 + 硬性规则）
+├── learning-coach/          # 闯关式一对一学习教练
+│   ├── SKILL.md             # 技能主文件（触发条件 + 执行流程 + 硬性规则）
+│   └── references/
+│       ├── question-types.md    # 六种题型的出题模板
+│       └── example-session.md   # 一次完整闯关的示范
+└── self-portrait/           # 自我画像教练（六维度自我提炼）
+    ├── SKILL.md             # 三层证据法 + 六维度流程 + 硬性规则
     └── references/
-        ├── question-types.md    # 六种题型的出题模板
-        └── example-session.md   # 一次完整闯关的示范
+        ├── question-bank.md     # 六个维度的提问题库（含杀手锏追问）
+        └── output-template.md   # 输出文档模板 + 结构化 JSON schema
 ```
 
 每个 skill 一个顶级目录，目录名即技能名（需与 `SKILL.md` 中 `name` 字段一致）。
@@ -67,6 +72,32 @@ ln -s /path/to/learning-skills/learning-coach ~/.workbuddy/skills/learning-coach
 - 人读档案：`D:\文档\学习记录\<主题>-<日期>.md`（头尾各一份进度总览）
 - 跨主题总览：`D:\文档\学习记录\index.md`
 - 结构化主库：`D:\文档\学习记录\learning-data.json`（预留给未来做 app 直接 import）
+
+### self-portrait — 自我画像教练
+
+**触发**：说「帮我梳理一下我自己 / 我的优势到底是什么 / 我想认清自己 / 我到底想要什么」，
+或做简历包装、面试准备、职业规划之前需要先把素材挖出来。
+
+**核心机制**：
+
+| 机制 | 说明 |
+|---|---|
+| 三层证据法 | 取事件 → 拆细节 → 归标签。不问"你有什么能力"，只问"发生过什么" |
+| 六维度覆盖 | 学识 / 能力 / 思维 / 态度 / 人格 / 理想 |
+| 证据绑定 | 每个标签必须挂事件：≥2 个独立证据才"已确认"，1 个"待验证"，有反例"存疑" |
+| 杀手锏追问 | "这件事换个水平相当的人来做，他会在哪一步卡住？" |
+| 能力二分 | 可迁移 vs 岗位绑定，后者占比过高是风险信号 |
+| 矛盾探测 | 主动找"自述 vs 行为""理想 vs 代价""标签 vs 反例"，当面指出不顺着说 |
+| 提问节奏 | 一轮 3-5 题、只打一个维度，轮末出提炼卡，用户确认后才落档 |
+| 增量更新 | 靠 `coverage` 找缺口，靠 `askedQuestions` 避免重复提问 |
+
+**画像数据不放在本仓库**，存在本地文档库：
+
+- 人读画像：`D:\文档\自我画像\self-portrait.md`
+- 结构化主库：`D:\文档\自我画像\profile-data.json`
+
+**与 learning-coach 的分工**：learning-coach 解决"我想学会一个东西"，self-portrait 解决
+"我想搞清楚我自己"。前者出题考你，后者提问挖你。
 
 ## 公开内容边界（重要）
 
